@@ -993,4 +993,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if(adminToggleBtn) {
         adminToggleBtn.addEventListener('click', toggleAdminMode);
     }
+
 });
