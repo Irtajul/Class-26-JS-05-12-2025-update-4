@@ -276,20 +276,20 @@ function renderStudentList(students, headerText = null) {
         
         switch (teamNumber) {
             case '1': 
-                leader1Image = 'FIT-WDD-1517.jpg'; 
-                leader2Image = 'FIT-WDD-1517.jpg'; 
+                leader1Image = 'img/FIT-WDD-1517.jpg'; 
+                leader2Image = 'img/FIT-WDD-1517.jpg'; 
                 break;
             case '2': 
-                leader1Image = 'FIT-WDD-1517.jpg';
-                leader2Image = 'FIT-WDD-1517.jpg';
+                leader1Image = 'img/FIT-WDD-1517.jpg';
+                leader2Image = 'img/FIT-WDD-1517.jpg';
                 break;
             case '3': 
-                leader1Image = 'FIT-WDD-1517.jpg';
-                leader2Image = 'FIT-WDD-1517.jpg';
+                leader1Image = 'img/FIT-WDD-1517.jpg';
+                leader2Image = 'img/FIT-WDD-1517.jpg';
                 break;
             case '4': 
-                leader1Image = 'FIT-WDD-1517.jpg';
-                leader2Image = 'FIT-WDD-1517.jpg';
+                leader1Image = 'img/FIT-WDD-1517.jpg';
+                leader2Image = 'img/FIT-WDD-1517.jpg';
                 break;
             default:
                 break;
@@ -995,6 +995,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
 
 
 
