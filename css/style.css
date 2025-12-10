@@ -1,0 +1,1387 @@
+/* Font used: Inter */
+
+body {
+    font-family: 'Inter', sans-serif;
+    /* Dark background color */
+    background-color: #0d2427;
+    margin: 0;
+    padding: 0;
+    color: #f0f0f0;
+    line-height: 1.5;
+}
+
+/* ========================================================== */
+/* NAV BAR STYLES */
+/* ========================================================== */
+.main-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px;
+    background-color: #1A3A3D; /* আপনার গাঢ় থিম কালার */
+    box-shadow: 0 2px 4px rgba(254, 0, 0, 0.7);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    height: 40px;
+    margin-left: 20px;
+    background: #ffffff;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.nav-logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Middle Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffc107;
+    border-bottom: 2px solid #ffc107;
+}
+
+/* Right Side Button */
+.nav-right {
+    display: flex;
+}
+
+.nav-action-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* --- Dropdown Specific Styles --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    padding-right: 15px !important;
+}
+
+.dropbtn i {
+    margin-left: 5px;
+    font-size: 0.9em;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    border-top: 3px solid #1A3A3D;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: normal;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-content a:hover {
+    background-color: #e9e9e9;
+    color: #1A3A3D;
+    border-bottom: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    border-bottom: 2px solid #ffc107;
+}
+
+/* Admin Toggle Button */
+.admin-toggle-btn {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.admin-toggle-btn i {
+    margin-right: 5px;
+}
+
+/* ========================================================== */
+/* CONTACT INFO & PROFILE IMAGE STYLES */
+/* ========================================================== */
+
+/* ... (আপনার বিদ্যমান .nav-right এবং .contact-info স্টাইলগুলি এখানে থাকবে) ... */
+
+/* ========================================================== */
+/* CONTACT INFO STYLES */
+/* ========================================================== */
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* ফোন ও ইমেলের মধ্যে দূরত্ব */
+}
+
+.contact-info {
+    color: #f0f0f0; /* সাধারণ টেক্সট কালার */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.contact-info:hover {
+    color: #ffc107; /* হোভার কালার - আপনার থিমের হাইলাইট কালার */
+}
+
+.contact-info i {
+    font-size: 1.1rem;
+    margin-right: 5px;
+}
+
+/* শুধুমাত্র বড় স্ক্রিনের জন্য টেক্সট দেখান, ছোট স্ক্রিনে শুধু আইকন */
+@media (max-width: 1200px) {
+    .nav-right {
+        gap: 30px;
+    }
+    .contact-text {
+        display: none; /* ছোট স্ক্রিনে ফোন নম্বর/ইমেল আইডি লুকিয়ে রাখুন */
+    }
+}
+
+/* খুব ছোট স্ক্রিনে (মোবাইল) মেনু লিঙ্ক ও যোগাযোগের তথ্য হাইড করা দরকার হতে পারে */
+@media (max-width: 900px) {
+    .nav-links {
+        display: none;
+    }
+    .nav-right {
+        /* এই অবস্থায় এটিকে লোগোর পাশে সরিয়ে আনা যেতে পারে */
+        margin-left: auto; 
+    }
+}
+
+/* প্রোফাইল আইকনের জন্য নতুন স্টাইল */
+.user-profile-icon {
+    /* নেভিগেশন বারে প্রদর্শন করার জন্য আকার: 40px */
+    width: 50px; 
+    height: 50px;
+    border-radius: 20%; /* গোল করার জন্য */
+    overflow: hidden; /* অতিরিক্ত অংশ লুকিয়ে রাখার জন্য */
+    cursor: pointer;
+    border: 2px solid #c9f350; /* হাইলাইট কালার দিয়ে বর্ডার যোগ করা হয়েছে */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* নিশ্চিত করুন যে এটি .nav-right এর সাথে ঠিকভাবে align হয় */
+    margin-left: 80px; 
+}
+
+.user-profile-icon:hover {
+    transform: scale(1.1); /* হোভার করলে একটু বড় হবে */
+    box-shadow: 0 0 10px #ffc107; /* হোভার করলে শ্যাডো আসবে */
+}
+
+.user-profile-icon .profile-img {
+    /* img ট্যাগটিকে its parent (40x40) এর মধ্যে ফিট করার জন্য */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+/* ========================================================== */
+/* END NAV BAR STYLES */
+/* ========================================================== */
+
+
+/* style.css (যেকোনো ফাঁকা জায়গায় যোগ করুন) */
+
+/* style.css (যেকোনো ফাঁকা জায়গায় যোগ করুন) */
+
+.top-team-filter-bar {
+    background-color: #1a3a3d; /* আপনার গাঢ় থিম কালার */
+    color: #ffffff;
+    padding: 15px 30px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.top-team-filter-bar h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+
+.main-container {
+    /* 🟢 FIX: 1200px থেকে 1400px এ বাড়ানো হলো (স্ক্রিনের অধিকাংশ জায়গা নেবে) */
+    max-width: 1600px; 
+    margin: 0 auto;
+    padding: 30px 0 !important;
+}
+
+/* ========================================================== */
+/* HERO SECTION STYLES */
+/* ========================================================== */
+.hero-slider-container {
+    width: 100%;
+    overflow: hidden;
+    height: 800px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    /*border-bottom: 2px solid #FE0000;*/
+    box-shadow: 0 2px 7px rgba(254, 0, 0, 0.7);
+}
+
+.slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 36, 39, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    color: white;
+    padding: 10px;
+}
+
+.hero-content h1 {
+    width: 100%;
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: #3cb371;
+    text-shadow:
+        -1px -1px 0 #FFFFFF,
+        1px -1px 0 #FFFFFF,
+        -1px  1px 0 #FFFFFF,
+        1px  1px 0 #FFFFFF,
+        -1px  0px 0 #FFFFFF,
+        1px  0px 0 #FFFFFF,
+        0px -1px 0 #FFFFFF,
+        0px  1px 0 #FFFFFF;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #1a3a3d;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.cta-button:hover {
+    background-color: #1660b6;
+    transform: translateY(-3px);
+}
+
+/* ========================================================== */
+/* END HERO SECTION STYLES */
+/* ========================================================== */
+
+
+/* --- Header Style --- */
+.header-container {
+    background-color: #2e8b57;
+    color: white;
+    padding: 20px 10px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.header-container h1, .header-container p {
+    margin: 5px 0;
+}
+
+.header-container h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.header-container p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* ========================================================== */
+/* ACTION BAR STYLES (SEARCH, BUTTONS) */
+/* ========================================================== */
+.action-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    background-color: #1a3a3d;
+    padding: 15px;
+    border: 1px solid #FE0000;
+    border-radius: 8px;
+    box-shadow:
+        0 4px 15px rgba(254, 0, 0, 0.3),
+        0 0 25px 5px rgba(254, 0, 0, 0.3),
+        0 0 50px rgba(55, 82, 48, 0.3);
+}
+
+#input {
+    flex-grow: 1;
+    max-width: 300px;
+    padding: 10px 15px;
+    border: 1px solid #5a7d81;
+    border-radius: 6px;
+    background-color: #0d2427;
+    color: #f0f0f0;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#input::placeholder {
+    color: #a0a0a0;
+}
+
+#input:focus {
+    border-color: #3cb371;
+}
+
+.action-bar button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.1s;
+    color: white;
+}
+
+.action-bar button:active {
+    transform: scale(0.98);
+}
+
+/* ADMIN TOGGLE BUTTON STYLING */
+.action-bar .admin-toggle-btn {
+    background-color: #ffc107;
+    color: #333;
+    border: 1px solid #ff9800;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.action-bar .admin-toggle-btn:hover {
+    background-color: #ff9800;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 152, 0, 0.4);
+}
+
+.action-bar .admin-toggle-btn:active {
+    transform: scale(0.95);
+    background-color: #e68900;
+}
+
+.action-bar .admin-toggle-btn i {
+    margin-right: 5px;
+}
+
+/* COPY DATA BUTTON STYLING */
+.action-bar .copy-data-btn {
+    background-color: #00bcd4;
+    color: white;
+}
+
+.action-bar .copy-data-btn:hover {
+    background-color: #0097a7;
+}
+
+.action-bar .copy-data-btn:active {
+    transform: scale(0.98);
+}
+
+#submitSearch {
+    background-color: #1a73e8;
+}
+
+#submitSearch:hover {
+    background-color: #1660b6;
+}
+
+#refreshData {
+    background-color: #ff9800;
+}
+
+#refreshData:hover {
+    background-color: #e68900;
+}
+
+#addData {
+    background-color: #00a859;
+}
+
+#addData:hover {
+    background-color: #008f4c;
+}
+
+/* ========================================================== */
+/* NEW: 150PX PROFILE WIDGET STYLES (HALF-OUT CARD DESIGN) */
+/* ========================================================== */
+
+/* কন্টেইনার স্টাইল: উইজেটটিকে সেন্টারে আনতে */
+.profile-widget-container {
+    display: flex;
+    justify-content: center;
+    margin: 80px auto;
+    padding: 0 5px;
+}
+
+/* 1. প্রোফাইল বক্স স্টাইল (150px কার্ড সাইজ) */
+.profile-widget-box {
+    width: 250px; 
+    height: 200px; /* ভেতরের কন্টেন্ট ফিট করার জন্য উচ্চতা বাড়ানো হলো */
+    background-color: #274246; /* আপনার কার্ডের ব্যাকগ্রাউন্ড কালার */
+    border: 1px solid #c9f350;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(201, 243, 80, 0.5), 0 3px 8px rgba(1, 50, 32, 0.5); /* Card থেকে শ্যাডো লজিক নেওয়া হলো */
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative; 
+    padding-top: 30px; /* কন্টেন্টকে নিচে নামাতে */
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: visible; 
+}
+
+.profile-widget-box:hover {
+    transform: translateY(-5px); 
+    
+    border: 1px solid #FE0000;
+    box-shadow: 
+        0 0 50px rgba(254, 0, 0, 0.7), 
+        0 8px 15px rgba(1, 50, 32, 0.6);
+}
+
+/* 2. ইমেজ স্টাইল ও পজিশনিং (Half-Out Design) */
+.profile-widget-box .profile-image-large {
+    width: 120px; 
+    height: 120px; 
+    border-radius: 20%; 
+    object-fit: cover;
+    
+    /* হাফ-আউট পজিশনিং */
+    position: absolute; 
+    top: -45px; /* 90px এর অর্ধেক (45px) উপরে টেনে আনা হলো */
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid #FE0000; 
+    background-color: #0d2427; 
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* 3. টেক্সট স্পেসিং এবং স্টাইল (আপনার নতুন ট্যাগ অনুযায়ী) */
+.profile-widget-box h1 {
+    margin-top: 70px; /* ইমেজ থেকে টেক্সটকে নিচে নামাতে 50px মার্জিন */
+    margin-bottom: 2px;
+    font-size: 1rem; /* ছোট বক্সে ফিট করার জন্য */
+    color: #f0f0f0;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    padding: 0 5px; 
+}
+
+.profile-widget-box h5 {
+    margin: 0 0 2px 0;
+    font-size: 0.8rem;
+    color: #3cb371; /* সবুজ রং */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 5px;
+}
+
+.profile-widget-box p {
+    color: #b0e0e6;
+    margin: 0 0 5px 0;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 5px;
+}
+
+/* বাটন স্টাইল */
+.profile-widget-box .admin-toggle-btn {
+    display: block; 
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    border-radius: 7px;
+}
+
+/* ========================================================== */
+/* TEAM LIST CONTAINER & GRID (CRUCIAL UPDATE HERE) */
+/* ========================================================== */
+
+/* Student List Container (Grid removed here) */
+#studentList {
+    display: block; 
+    gap: 0;
+    /* 🟢 চূড়ান্ত FIX: ডানে/বামে প্যাডিং শূন্য করা হলো */
+    padding: 30px 0px !important; 
+    
+    /* 🟢 চূড়ান্ত FIX: ডানে/বামে মার্জিন শূন্য করা হলো */
+    margin: 0 auto !important; 
+    
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* ⚠️ নতুন গ্রিড ক্লাস: প্রতিটি টিমের কার্ডগুলিকে গ্রিডে সাজাবে। */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px; 
+    padding: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ========================================================== */
+/* TEAM SECTION HEADER STYLES (আপডেট করা হলো) */
+/* ========================================================== */
+
+.team-section-header {
+    width: 100%;
+    position: relative; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* 🟢 FIX 1: বক্স সাইজিং যুক্ত করা হলো যাতে প্যাডিং প্রস্থ না বাড়ায় */
+    box-sizing: border-box; 
+    
+    /* FIX: হেডার চিকন করা */
+    /* 🟢 FIX 2: প্যাডিং 15px থেকে 10px এ কমানো হলো (ঐচ্ছিক) */
+    padding: 10px 10px; 
+    
+    background-color: #1A3A3D;
+    color: #f0f0f0;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    border: 1px solid #FE0000;
+    border-radius: 8px;
+    box-shadow:
+        0 4px 15px rgba(254, 0, 0, 0.3),
+        0 0 25px 5px rgba(254, 0, 0, 0.3),
+        0 0 50px rgba(55, 82, 48, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 5; 
+    height: 35px; 
+}
+
+
+/* NEW: টিম হেডার হোভার স্টাইল */
+.team-section-header:hover {
+    transform: translateY(-5px); /* হোভার করলে 5px উপরে উঠবে */
+    box-shadow: 
+        0 0 30px rgba(60, 179, 113, 0.5), /* উজ্জ্বল সবুজ গ্লো */
+        0 8px 15px rgba(0, 0, 0, 0.6);
+}
+
+.team-header-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    margin-right: auto; 
+}
+
+.team-leaders-images {
+    display: flex;
+    align-items: center;
+    gap: 30px; 
+    margin-right: 100px;  
+}
+
+/* একক লিডার প্রোফাইল ইমেজের স্টাইল */
+.leader-profile-img {
+    width: 100px; /* ইমেজের আকার */
+    height: 100px;
+    border-radius: 25%; /* গোলাকার করার জন্য */
+    border: 2px solid #c9f350; /* হাইলাইট রঙের বর্ডার */
+    object-fit: cover; /* ইমেজ কেটে গেলেও অনুপাত ঠিক রাখার জন্য */
+    transition: transform 0.3s ease;
+}
+
+/* দুটি ইমেজকে সামান্য ওভারল্যাপ করানোর জন্য (ঐচ্ছিক, স্টাইলের জন্য) */
+.team-leaders-images {
+    display: flex;
+    align-items: center;
+    gap: 30px; 
+    
+    /* 🚀 নতুন সংযোজন: বাম দিকে পর্যাপ্ত ফাঁকা স্থান তৈরি করে ইমেজগুলিকে বামে সরিয়ে দেবে */
+    margin-left: 200px; /* উদাহরণস্বরূপ 200px ব্যবহার করা হলো। আপনি এই মানটি কম-বেশি করতে পারেন */
+}
+.leader-profile-img.leader-1 {
+    z-index: 2; /* প্রথম ইমেজটি একটু উপরে দেখাবে */
+}
+
+.leader-profile-img:hover {
+    transform: translateY(-5px); /* হোভার করলে সামান্য উপরে উঠবে */
+}
+
+/* ========================================================== */
+/* CARD STYLES */
+/* ========================================================== */
+
+.card {
+    background: #274246;
+    color: #ffffff;
+    border: 2px solid #6cd79c;
+    border-radius: 10px;
+    padding: 15px 10px 20px 10px;
+    text-align: center;
+    
+    /* White Glow */
+    box-shadow:
+        0 0 20px rgba(201, 243, 80, 0.8),
+        0 2px 7px rgba(1, 50, 32, 0.3);
+        
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    margin-top: 45px;
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 320px; /* ✨ লেআউট ফিক্স: এই লাইনটি বাটনকে নিচে আটকে রাখতে সাহায্য করবে ✨ */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    
+    /* Brighter white glow on hover */
+    box-shadow:
+        0 0 50px rgba(255, 0, 0, 0.7),
+        0 8px 15px rgba(1, 50, 32, 0.6);
+}
+
+.profile-img-container {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 90px;
+    background-color: #f7f7f7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #3cb371;
+    box-shadow: 0 0 0 5px rgba(255, 0, 0, 0.8),
+                0 0 15px rgba(60, 179, 113, 0.6);
+}
+
+.profile-initials {
+    width: 80px;
+    height: 80px;
+    background-color: #2e8b57;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.profile-img-tag {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+
+.student-info {
+    padding-top: 40px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* এটি Roll/Name, Icons ও Buttons-কে সমানভাবে সাজিয়ে বাটনকে নিচে ঠেলে দেবে */
+}
+
+.student-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: #ffffff;
+}
+
+.student-roll {
+    font-size: 0.9rem;
+    color: #ffffff;
+    margin: 0 0 5px 0;
+}
+
+.student-batch {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 5px 0 10px 0;
+}
+
+/* Social Icons Style */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-top: 1px solid #00AB00;
+    padding-top: 10px;
+}
+
+.social-icons .social-logo {
+    width: 80%; 
+    height: 80%;
+    filter: none;
+}
+
+
+
+
+
+/* 1. সমস্ত সোশ্যাল আইকন কন্টেইনার (a) এর জন্য */
+.social-icons a {
+    /* নিখুঁত বৃত্ত ও আকারের জন্য */
+    margin-top: 175px;
+    width: 30px !important; 
+    height: 30px !important; 
+    border: 1px solid #FE0000;
+    border-radius: 50%; 
+    
+    /* পটভূমি ও আইকনের রঙ */
+    background-color: #ffffff !important; /* অভিন্ন পটভূমির রঙ */
+    color: #00AB00 !important; /* অভিন্ন আইকনের রঙ */
+    
+    /* আইকনকে মাঝখানে আনার জন্য */
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 1.1rem; /* Font Awesome আইকনের আকার */
+    transition: all 0.2s;
+}
+
+/* 2. হোভার স্টাইল (সবুজ #00AB00 এর উপর সামান্য গাঢ় রঙ) */
+.social-icons a:hover {
+    background-color: #000000 !important;
+    transform: scale(1.15);
+}
+
+/* 3. ইমেজ লোগো (Fiverr, Upwork) এর জন্য */
+.social-icons .social-logo {
+    width: 80%; 
+    height: 80%; 
+    /*filter: brightness(0) invert(1); /* 🚨 লোগোর আসল রঙকে সাদা করার জন্য। যদি আপনার লোগোগুলি আগে থেকেই সাদা হয় তবে এই লাইনটি মুছে দিন। */*/
+}
+
+.social-icons a:hover {
+    color: #ff9800;
+    transform: scale(1.15);
+}
+
+/* Hidden Details Style (Email & Phone) */
+.hidden-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s;
+    opacity: 0;
+    padding: 0 10px;
+    text-align: left;
+}
+
+.card.expanded .hidden-details {
+    max-height: 100px;
+    opacity: 1;
+    padding: 10px;
+    margin: 10px 0 15px 0;
+    background-color: #1a3a3d;
+    border-radius: 6px;
+    border-left: 3px solid #FE0000;
+}
+
+.details-section p {
+    margin: 3px 0;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.details-section i {
+    margin-right: 8px;
+    color: #2e8b57;
+}
+
+/* Card Button Style */
+.card-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.card-buttons button {
+    flex-grow: 1;
+    padding: 8px 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.card-buttons .edit {
+    background-color: #ff9800;
+    color: white;
+}
+
+.card-buttons .delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.card-buttons .open {
+    background-color: #2e8b57;
+    color: white;
+    border: 1px solid #FE0000;
+}
+
+.card-buttons .open:hover {
+    background-color: #226b43;
+}
+
+/* No results found */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #a0a0a0;
+    font-size: 1.1rem;
+    padding: 40px;
+    background-color: #1a3a3d;
+    border-radius: 8px;
+}
+
+/* ========================================================== */
+/* MODAL STYLES */
+/* ========================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #2E8B57;
+    color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 5px 25px rgba(254, 0, 0, 0.9);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid #FE0000;
+}
+
+.modal-title {
+    color: #ffffff;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+    background: #FFC107;
+    border: 1px solid #FFC107;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.modal-close-button:hover {
+    color: #333;
+}
+
+/* Modal Profile Header Styles */
+.modal-profile-header {
+    text-align: center;
+    padding-bottom: 10px;
+    margin-top: -10px;
+    border-bottom: 1px dashed #ddd;
+    color: #ffffff;
+}
+
+.modal-profile-header .profile-img-container-modal {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 2px auto;
+    background-color: #FF0000;
+    color: #ffffff;
+    border-radius: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 5px rgba(230, 230, 230, 0.2), 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-profile-header .profile-img-tag {
+    width: 140px;
+    height: 140px;
+    border-radius: 4%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+.modal-profile-header .profile-initials-modal {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    color: #ffffff;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+/* Form Styles */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 15px 10px;
+    align-items: center;
+    box-shadow: 0 0 0 15px rgba(230, 230, 230, 0.2), 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-grid label {
+    font-weight: 600;
+    text-align: right;
+    color: #555;
+}
+
+.form-grid input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* CSS FOR DELETE BUTTON ON STANDARD FIELDS */
+.input-with-delete {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-delete input {
+    width: 100%;
+    padding-right: 35px;
+}
+
+.clear-field-btn {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #f44336;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 0.9rem;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    z-index: 10;
+}
+
+.clear-field-btn:hover {
+    opacity: 1;
+}
+
+/* NEW CUSTOM FIELD STYLES */
+.custom-fields-container {
+    grid-column: 1 / -1;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+    background-color: #f8f8f8;
+}
+
+.custom-fields-title {
+    font-size: 1rem;
+    color: #3cb371;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    font-weight: 600;
+}
+
+.custom-field-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.custom-field-group input[name*="-key"],
+.custom-field-group input[name*="-value"] {
+    flex-grow: 1;
+}
+
+.custom-field-group input[name*="-key"] {
+    width: 30%;
+    flex-grow: 0;
+    background-color: #e6f7ff;
+}
+
+.custom-field-group .remove-field-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 0.8rem;
+    transition: background-color 0.2s;
+}
+
+.custom-field-group .remove-field-btn:hover {
+    background-color: #d32f2f;
+}
+
+.add-custom-field-btn {
+    background-color: #2e8b57;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.add-custom-field-btn:hover {
+    background-color: #226b43;
+}
+
+
+.form-actions {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.form-actions button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    color: white;
+}
+
+.form-actions .save {
+    background-color: #1a73e8;
+}
+
+.form-actions .save:hover {
+    background-color: #1660b6;
+}
+
+.form-actions .close {
+    background-color: #FFC107;
+    color: #000000;
+}
+
+.form-actions .close:hover {
+    background-color: #5a6268;
+}
+
+/* Details Modal Specific Styles */
+.details-body {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    border: 1px solid #6cd79c;
+}
+
+.details-body p {
+    margin: 5px 0;
+    padding: 5px 0;
+    border-bottom: 1px dotted #6cd79c;
+    font-size: 1rem;
+    color: #333;
+}
+
+.details-body p:last-child {
+    border-bottom: none;
+}
+
+.details-body strong {
+    /*color: #2e8b57;*/
+    display: inline-block;
+    width: 140px;
+    margin-right: 10px;
+}
+
+/* ========================================================== */
+/* RESPONSIVENESS (Media Queries) */
+/* ========================================================== */
+
+/* 1100px এর নিচে 2 কলামে নেমে যাবে */
+@media (max-width: 1100px) {
+    /* শুধুমাত্র card-grid পরিবর্তন হবে */
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 768px এর নিচে মোবাইল স্ক্রিন */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 0;
+    }
+    .action-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .action-bar button {
+        width: 100%;
+        margin-top: 5px;
+    }
+    #input {
+        max-width: none;
+        width: 100%;
+    }
+    .header-container {
+        border-radius: 0;
+    }
+    .card-buttons {
+        flex-wrap: wrap;
+    }
+    .card-buttons button {
+        flex-grow: 1;
+        width: 48%;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-grid label {
+        text-align: left;
+    }
+    .details-body strong {
+        width: 100%;
+        display: block;
+        border: 1px solid #FE0000;
+    }
+    .custom-field-group {
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+    .custom-field-group input[name*="-key"] {
+        width: 100%;
+        flex-grow: 1;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+}
+
+/* 650px এর নিচে 1 কলামে নেমে যাবে */
+@media (max-width: 650px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    #studentList {
+        padding: 10px;
+    }
+    .team-section-header {
+        margin-top: 25px;
+        padding: 5px 5px;
+    }
+    .team-section-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ========================================================== */
+/* FOOTER STYLES */
+/* ========================================================== */
+
+.site-footer {
+    background-color: #1a3a3d;
+    color: #f0f0f0;
+    padding: 20px 0;
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(254, 0, 0, 0.8), 0 0 15px rgba(55, 82, 48, 0.7);
+    border-bottom: 1px solid #FE0000;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.footer-links {
+    margin-top: 15px;
+}
+
+.footer-links a {
+    color: #a0d0a0;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+    font-size: 0.85em;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+
