@@ -3,7 +3,7 @@
 // ==========================================================
 
 // TODO: Google Apps Script API-এর Web App URL-টি এখানে বসাতে হবে।
-const GOOGLE_APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzsZ5hUs-A8l_3eYUt40tX5sZ-G8pFE0lkr9M3vPSebIFuI5KPEhewRjtTPFoKCtPYiQQ/exec"; 
+const GOOGLE_APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydouSRZnaHssvTABvbHlBEsTBrZnPyj8GtkUViOWwHQpSJ5_yKYqMWZyxZmHdhQnlL/exec"; 
 
 // Local Fallback Data: যদি API থেকে ডেটা লোড না হয়, তবে এই ডেটা ব্যবহার করা হবে।
 // 💡 মোট ৮টি কার্ড দেখার জন্য এখানে ৬টি অতিরিক্ত ডামি ডেটা যোগ করা হলো
@@ -1007,3 +1007,4 @@ document.addEventListener('DOMContentLoaded', () => {
         adminToggleBtn.addEventListener('click', toggleAdminMode);
     }
 });
+
