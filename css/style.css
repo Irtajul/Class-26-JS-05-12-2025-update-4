@@ -1,11 +1,11 @@
-/* Font used: Inter */
-
+/* ========================================================== */
+/* GLOBAL STYLES */
+/* ========================================================== */
 body {
     font-family: 'Inter', sans-serif;
-    /* Dark background color */
     background-color: #0d2427;
     margin: 0;
-    padding: 0;
+    padding-top: 85px; /* Navbar fixed তাই team বা নিচের অংশ যেন ঢাকা না পড়ে */
     color: #f0f0f0;
     line-height: 1.5;
 }
@@ -17,12 +17,38 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 15px;
-    background-color: #1A3A3D; /* আপনার গাঢ় থিম কালার */
-    box-shadow: 0 2px 4px rgba(254, 0, 0, 0.7);
-    position: sticky;
+    padding: 10px 30px;
+    background-color: #0C1A1B; /* তোমার Teal কালার */
+    position: fixed; 
     top: 0;
-    z-index: 1000;
+    width: 100%;
+    height: 75px;
+    box-sizing: border-box;
+    z-index: 100000;
+    
+    /* overflow: visible যেন ড্রপডাউন মেনু নিচে দেখা যায় */
+    overflow: visible !important; 
+    border-bottom: 2px solid #d6120c; /* রেড বর্ডার */
+    box-shadow: 0 4px 12px rgba(214, 18, 12, 0.3);
+}
+
+/* লেজার ইফেক্ট - তোমার লাল কালার দিয়ে */
+.main-navbar::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: -100%;
+    width: 30%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d6120c, #fff, #d6120c, transparent);
+    animation: laserMove 4s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes laserMove {
+    0% { left: -100%; }
+    100% { left: 150%; }
 }
 
 .nav-left {
@@ -37,17 +63,17 @@ body {
 }
 
 .nav-logo {
-    height: 40px;
-    margin-left: 20px;
-    background: #ffffff;
+    height: 45px;
+    margin-left: 10px;
     border-radius: 5px;
-    padding: 2px;
+    padding: 4px;
 }
 
 .nav-logo-text {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: bold;
     color: #ffffff;
+    margin-left: 10px;
 }
 
 /* Middle Links */
@@ -63,178 +89,156 @@ body {
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: 500;
-    padding: 5px 0;
-    transition: color 0.3s;
+    text-decoration: none !important; 
+    color: #ffffff !important;        
+    font-weight: 600;
+    font-size: 16px; 
+    padding: 10px 0;
+    position: relative;               
+    transition: 0.3s ease;
 }
 
+/* হোভার করলে লাল (#d6120c) হবে এবং আন্ডারলাইন আসবে */
 .nav-links a:hover {
-    color: #ffc107;
-    border-bottom: 2px solid #ffc107;
+    color: #d6120c !important; 
 }
 
-/* Right Side Button */
-.nav-right {
-    display: flex;
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0; 
+    left: 0;
+    background-color: #d6120c; 
+    transition: width 0.3s ease-in-out;
 }
 
-.nav-action-btn {
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
+.nav-links a:hover::after {
+    width: 100%; 
 }
 
-/* --- Dropdown Specific Styles --- */
+/* ========================================================== */
+/* DROPDOWN STYLES - FIXED & SPACIOUS */
+/* ========================================================== */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-.dropbtn {
-    padding-right: 15px !important;
-}
-
-.dropbtn i {
-    margin-left: 5px;
-    font-size: 0.9em;
-}
-
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 140px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 100;
-    border-top: 3px solid #1A3A3D;
+    background-color: #1A3A3D; 
+    min-width: 200px; /* উইডথ বাড়ানো হলো যেন মেনু না চাপে */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+    z-index: 999999; 
+    border-top: 3px solid #d6120c;
+    top: 100%;
+    left: 0;
+    padding: 5px 0;
 }
 
 .dropdown-content a {
-    color: #333;
-    padding: 12px 16px;
-    text-decoration: none;
+    color: #ffffff !important;           
+    padding: 14px 20px; /* বেশি প্যাডিং যেন ফন্ট না চাপে */
     display: block;
-    font-weight: normal;
-    border-bottom: 1px solid #eee;
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 16px; /* বড় ফন্ট */
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.3s ease;
 }
 
 .dropdown-content a:hover {
-    background-color: #e9e9e9;
-    color: #1A3A3D;
-    border-bottom: none;
+    background-color: #ffffff !important;
+    padding-left: 25px; /* হোভার এনিমেশন */
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    border-bottom: 2px solid #ffc107;
-}
-
-/* Admin Toggle Button */
-.admin-toggle-btn {
-    background-color: #ffc107;
-    color: #333;
-}
-
-.admin-toggle-btn i {
-    margin-right: 5px;
+    display: block !important;
 }
 
 /* ========================================================== */
-/* CONTACT INFO & PROFILE IMAGE STYLES */
+/* CONTACT INFO & PROFILE STYLES */
 /* ========================================================== */
-
-/* ... (আপনার বিদ্যমান .nav-right এবং .contact-info স্টাইলগুলি এখানে থাকবে) ... */
-
-/* ========================================================== */
-/* CONTACT INFO STYLES */
-/* ========================================================== */
-
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 20px; /* ফোন ও ইমেলের মধ্যে দূরত্ব */
+    gap: 20px; 
 }
 
 .contact-info {
-    color: #f0f0f0; /* সাধারণ টেক্সট কালার */
-    text-decoration: none;
+    text-decoration: none !important; 
+    color: #f0f0f0 !important;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 5px 0;
+    position: relative; 
+    transition: 0.3s ease;
     display: flex;
     align-items: center;
-    transition: color 0.3s ease;
 }
 
 .contact-info:hover {
-    color: #ffc107; /* হোভার কালার - আপনার থিমের হাইলাইট কালার */
+    color: #d6120c !important; 
+}
+
+/* কন্টাক্ট ইনফোতেও সার্ভিস পেজের মতো আন্ডারলাইন */
+.contact-info::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px; 
+    left: 0;
+    background-color: #d6120c; 
+    transition: width 0.3s ease-in-out;
+}
+
+.contact-info:hover::after {
+    width: 100%; 
 }
 
 .contact-info i {
     font-size: 1.1rem;
-    margin-right: 5px;
+    margin-right: 8px;
+    color: #d6120c;
 }
 
-/* শুধুমাত্র বড় স্ক্রিনের জন্য টেক্সট দেখান, ছোট স্ক্রিনে শুধু আইকন */
+/* রেসপন্সিভনেস */
 @media (max-width: 1200px) {
-    .nav-right {
-        gap: 30px;
-    }
-    .contact-text {
-        display: none; /* ছোট স্ক্রিনে ফোন নম্বর/ইমেল আইডি লুকিয়ে রাখুন */
-    }
+    .contact-text { display: none; }
 }
 
-/* খুব ছোট স্ক্রিনে (মোবাইল) মেনু লিঙ্ক ও যোগাযোগের তথ্য হাইড করা দরকার হতে পারে */
 @media (max-width: 900px) {
-    .nav-links {
-        display: none;
-    }
-    .nav-right {
-        /* এই অবস্থায় এটিকে লোগোর পাশে সরিয়ে আনা যেতে পারে */
-        margin-left: auto; 
-    }
+    .nav-links { display: none; }
+    .nav-right { margin-left: auto; }
 }
 
-/* প্রোফাইল আইকনের জন্য নতুন স্টাইল */
+/* প্রোফাইল আইকন */
 .user-profile-icon {
-    /* নেভিগেশন বারে প্রদর্শন করার জন্য আকার: 40px */
-    width: 50px; 
-    height: 50px;
-    border-radius: 20%; /* গোল করার জন্য */
-    overflow: hidden; /* অতিরিক্ত অংশ লুকিয়ে রাখার জন্য */
+    width: 45px; 
+    height: 45px;
+    border-radius: 12px; 
+    overflow: hidden; 
     cursor: pointer;
-    border: 2px solid #c9f350; /* হাইলাইট কালার দিয়ে বর্ডার যোগ করা হয়েছে */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    /* নিশ্চিত করুন যে এটি .nav-right এর সাথে ঠিকভাবে align হয় */
-    margin-left: 80px; 
+    border: 2px solid #d6120c; 
+    transition: transform 0.2s ease;
+    margin-left: 10px;
 }
 
 .user-profile-icon:hover {
-    transform: scale(1.1); /* হোভার করলে একটু বড় হবে */
-    box-shadow: 0 0 10px #ffc107; /* হোভার করলে শ্যাডো আসবে */
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(214, 18, 12, 0.6);
 }
 
 .user-profile-icon .profile-img {
-    /* img ট্যাগটিকে its parent (40x40) এর মধ্যে ফিট করার জন্য */
     width: 100%;
     height: 100%;
     object-fit: cover; 
 }
-
-/* ========================================================== */
-/* END NAV BAR STYLES */
-/* ========================================================== */
-
 
 /* style.css (যেকোনো ফাঁকা জায়গায় যোগ করুন) */
 
@@ -265,25 +269,23 @@ body {
 }
 
 /* ========================================================== */
-/* HERO SECTION STYLES */
+/* HERO SECTION STYLES - UPDATED BY GEMINI */
 /* ========================================================== */
 .hero-slider-container {
     width: 100%;
     overflow: hidden;
     height: 800px;
     position: relative;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    /*border-bottom: 2px solid #FE0000;*/
-    box-shadow: 0 2px 7px rgba(254, 0, 0, 0.7);
+    /* তোমার লাল কালার (#d6120c) দিয়ে সুন্দর শ্যাডো */
+    box-shadow: 0 4px 15px rgba(214, 18, 12, 0.4);
+    border-bottom: 2px solid #d6120c; 
 }
 
 .slider {
     display: flex;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.8s ease-in-out;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); /* স্লাইডিং আরও স্মুথ করা হলো */
 }
 
 .slide {
@@ -298,6 +300,7 @@ body {
     position: relative;
 }
 
+/* স্লাইডারের ওপর ডার্ক ওভারলে যেন টেক্সট পরিষ্কার বোঝা যায় */
 .slide::before {
     content: '';
     position: absolute;
@@ -305,60 +308,101 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(13, 36, 39, 0.5);
+    background: linear-gradient(rgba(26, 58, 61, 0.6), rgba(13, 36, 39, 0.8));
 }
 
 .hero-content {
     position: relative;
     z-index: 10;
-    max-width: 900px;
+    max-width: 1000px;
     color: white;
-    padding: 10px;
+    padding: 20px;
+    /* এনিমেশন যাতে টেক্সট নিচ থেকে উপরে উঠে আসে */
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .hero-content h1 {
     width: 100%;
-    font-size: 4rem;
+    font-size: 4.5rem; /* একটু বড় করা হলো */
     font-weight: 900;
     margin-bottom: 20px;
-    color: #3cb371;
-    text-shadow:
-        -1px -1px 0 #FFFFFF,
-        1px -1px 0 #FFFFFF,
-        -1px  1px 0 #FFFFFF,
-        1px  1px 0 #FFFFFF,
-        -1px  0px 0 #FFFFFF,
-        1px  0px 0 #FFFFFF,
-        0px -1px 0 #FFFFFF,
-        0px  1px 0 #FFFFFF;
-    line-height: 1.2;
+    color: #ffffff; /* টেক্সট সাদা থাকবে */
+    /* তোমার লাল (#d6120c) কালারের আউটলাইন এবং শ্যাডো */
+    text-shadow: 
+        2px 2px 0 #d6120c,
+        -1px -1px 0 #d6120c,  
+        1px -1px 0 #d6120c,
+        -1px 1px 0 #d6120c,
+        1px 1px 0 #d6120c,
+        0 10px 20px rgba(0,0,0,0.5);
+    line-height: 1.1;
+    text-transform: uppercase;
 }
 
 .hero-content p {
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 500;
     margin-bottom: 40px;
-    opacity: 1;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    color: #f0f0f0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+/* ========================================================== */
+/* CTA BUTTON - সার্ভিস পেজের হোভার স্টাইলের সাথে মিল রেখে */
+/* ========================================================== */
 .cta-button {
     display: inline-block;
-    padding: 15px 35px;
-    background-color: #1a3a3d;
+    padding: 18px 45px;
+    background-color: #d6120c; /* তোমার মেইন রেড কালার */
     color: white;
     text-decoration: none;
-    font-weight: 700;
-    font-size: 1.2rem;
-    border: 1px solid #ffffff;
-    border-radius: 8px;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    font-weight: 800;
+    font-size: 1.3rem;
+    border: 2px solid #ffffff;
+    border-radius: 50px; /* রাউন্ডেড বাটন দেখতে প্রিমিয়াম লাগে */
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(214, 18, 12, 0.5);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* সার্ভিস পেজের মতো হোভার ইফেক্ট */
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #1a3a3d; /* হোভার করলে তোমার Teal কালার আসবে */
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.cta-button:hover::before {
+    left: 0;
 }
 
 .cta-button:hover {
-    background-color: #1660b6;
-    transform: translateY(-3px);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(214, 18, 12, 0.7);
+    border-color: #d6120c;
+}
+
+/* মোবাইল রেসপন্সিভ */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content p { font-size: 1.1rem; }
+    .hero-slider-container { height: 600px; }
 }
 
 /* ========================================================== */
@@ -391,8 +435,10 @@ body {
     font-weight: 500;
 }
 
+
+
 /* ========================================================== */
-/* ACTION BAR STYLES (SEARCH, BUTTONS) */
+/* ACTION BAR STYLES (ORIGINAL + CINEMATIC SUPER SLOW LASER) */
 /* ========================================================== */
 .action-bar {
     display: flex;
@@ -402,14 +448,56 @@ body {
     flex-wrap: wrap;
     background-color: #1a3a3d;
     padding: 15px;
+    
+    /* তোমার অরিজিনাল বর্ডার এবং শ্যাডো */
     border: 1px solid #FE0000;
     border-radius: 8px;
     box-shadow:
         0 4px 15px rgba(254, 0, 0, 0.3),
         0 0 25px 5px rgba(254, 0, 0, 0.3),
         0 0 50px rgba(55, 82, 48, 0.3);
+    
+    position: relative;
+    overflow: hidden; 
+    z-index: 1;
 }
 
+/* --- বিপু, এই লেজারটি এখন ডানে-বামে (ওপর-নিচে) সুপার স্লো চলবে --- */
+.action-bar::before {
+    content: '';
+    position: absolute;
+    width: 120px; /* আভাটা আরেকটু বড় করা হলো যেন দেখতে প্রিমিয়াম লাগে */
+    height: 120px; 
+    background: radial-gradient(circle, #fff 0%, #d6120c 50%, transparent 75%);
+    filter: blur(10px);
+    z-index: -1;
+    /* পুরো একবার ঘুরে আসতে ১৫ সেকেন্ড সময় নেবে (আরও শান্ত গতি) */
+    animation: moveAroundBorderUltraSlow 15s linear infinite;
+}
+
+/* টাইমিং অ্যাডজাস্টমেন্ট: 
+   - সাইড দেয়ালগুলো পার হতে মাত্র ২% সময় নেবে।
+   - ওপর আর নিচের লম্বা রাস্তা পার হতে বিশাল ৪৮% সময় নেবে।
+*/
+@keyframes moveAroundBorderUltraSlow {
+    0%   { top: 100%; left: 0%;   transform: translate(-50%, -50%); } /* শুরু: নিচ-বাম কোণা */
+    2%   { top: 0%;   left: 0%;   transform: translate(-50%, -50%); } /* বাম সাইড (মাত্র ২% সময়) */
+    50%  { top: 0%;   left: 100%; transform: translate(-50%, -50%); } /* ওপর দিয়ে ডানে (৪৮% বিশাল সময় - সুপার স্লো) */
+    52%  { top: 100%; left: 100%; transform: translate(-50%, -50%); } /* ডান সাইড (মাত্র ২% সময়) */
+    100% { top: 100%; left: 0%;   transform: translate(-50%, -50%); } /* নিচ দিয়ে বামে (৪৮% বিশাল সময় - সুপার স্লো) */
+}
+
+/* ভেতরের Teal অংশ */
+.action-bar::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #1a3a3d;
+    border-radius: 6px;
+    z-index: -1;
+}
+
+/* --- বাকি বাটন এবং ইনপুট কোড আগের মতোই আছে --- */
 #input {
     flex-grow: 1;
     max-width: 300px;
@@ -419,15 +507,7 @@ body {
     background-color: #0d2427;
     color: #f0f0f0;
     outline: none;
-    transition: border-color 0.3s;
-}
-
-#input::placeholder {
-    color: #a0a0a0;
-}
-
-#input:focus {
-    border-color: #3cb371;
+    z-index: 2;
 }
 
 .action-bar button {
@@ -436,77 +516,21 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
-    transition: background-color 0.3s, transform 0.1s;
     color: white;
+    z-index: 2;
 }
 
-.action-bar button:active {
-    transform: scale(0.98);
-}
+.action-bar .admin-toggle-btn { background-color: #ffc107; color: #333; border: 1px solid #ff9800; }
+.action-bar .copy-data-btn { background-color: #00bcd4; }
+#submitSearch { background-color: #1a73e8; }
+#refreshData { background-color: #ff9800; }
+#addData { background-color: #00a859; }
 
-/* ADMIN TOGGLE BUTTON STYLING */
-.action-bar .admin-toggle-btn {
-    background-color: #ffc107;
-    color: #333;
-    border: 1px solid #ff9800;
-    font-weight: 600;
-    padding: 10px 15px;
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-}
+.action-bar button:active { transform: scale(0.98); }
 
-.action-bar .admin-toggle-btn:hover {
-    background-color: #ff9800;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(255, 152, 0, 0.4);
-}
 
-.action-bar .admin-toggle-btn:active {
-    transform: scale(0.95);
-    background-color: #e68900;
-}
 
-.action-bar .admin-toggle-btn i {
-    margin-right: 5px;
-}
 
-/* COPY DATA BUTTON STYLING */
-.action-bar .copy-data-btn {
-    background-color: #00bcd4;
-    color: white;
-}
-
-.action-bar .copy-data-btn:hover {
-    background-color: #0097a7;
-}
-
-.action-bar .copy-data-btn:active {
-    transform: scale(0.98);
-}
-
-#submitSearch {
-    background-color: #1a73e8;
-}
-
-#submitSearch:hover {
-    background-color: #1660b6;
-}
-
-#refreshData {
-    background-color: #ff9800;
-}
-
-#refreshData:hover {
-    background-color: #e68900;
-}
-
-#addData {
-    background-color: #00a859;
-}
-
-#addData:hover {
-    background-color: #008f4c;
-}
 
 /* ========================================================== */
 /* NEW: 150PX PROFILE WIDGET STYLES (HALF-OUT CARD DESIGN) */
@@ -1342,18 +1366,33 @@ body {
 }
 
 /* ========================================================== */
-/* FOOTER STYLES */
+/* FOOTER STYLES - UPDATED BY GEMINI */
 /* ========================================================== */
 
 .site-footer {
-    background-color: #1a3a3d;
+    background-color: #0C1A1B; /* তোমার Teal কালার */
     color: #f0f0f0;
-    padding: 20px 0;
+    padding: 30px 0; /* প্যাডিং একটু বাড়ানো হলো গ্যাপের জন্য */
     margin-top: 50px;
     text-align: center;
     width: 100%;
-    box-shadow: 0 -2px 10px rgba(254, 0, 0, 0.8), 0 0 15px rgba(55, 82, 48, 0.7);
-    border-bottom: 1px solid #FE0000;
+    /* তোমার লাল কালার (#d6120c) দিয়ে গ্লো শ্যাডো */
+    box-shadow: 0 -4px 15px rgba(214, 18, 12, 0.3);
+    border-top: 2px solid #d6120c; /* উপরে লাল বর্ডার */
+    position: relative;
+    overflow: hidden;
+}
+
+/* ফুটারের নিচেও একটি লেজার ইফেক্ট (ঐচ্ছিক, দেখতে ভালো লাগবে) */
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 30%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d6120c, #fff, #d6120c, transparent);
+    animation: laserMove 10s linear infinite;
 }
 
 .footer-content {
@@ -1363,25 +1402,53 @@ body {
 }
 
 .footer-content p {
-    margin: 5px 0;
-    font-size: 0.9em;
+    margin: 8px 0;
+    font-size: 0.95em;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 .footer-links {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .footer-links a {
-    color: #a0d0a0;
+    color: #ffffff;
     text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s ease;
-    font-size: 0.85em;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 3px;
 }
 
+/* ফুটার লিঙ্কে হোভার করলে তোমার লাল কালার হবে */
 .footer-links a:hover {
-    color: #ffffff;
-    text-decoration: underline;
+    color: #d6120c;
+}
+
+/* ফুটার লিঙ্কেও নেভিবারের মতো ছোট আন্ডারলাইন অ্যানিমেশন */
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #d6120c;
+    transition: width 0.3s ease;
+}
+
+.footer-links a:hover::after {
+    width: 100%;
+}
+
+/* কপিরাইট টেক্সট কালার একটু সফট করা হলো */
+.footer-content p:last-child {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85em;
+    margin-top: 15px;
 }
 
 
