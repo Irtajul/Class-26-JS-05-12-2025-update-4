@@ -269,44 +269,44 @@ function renderStudentList(students, headerText = null) {
     }).forEach(team => {
         const teamStudents = groupedByTeam[team];
 
-        // 🚀 লিডারের ছবি নির্ধারণের লজিক
+    // 🚀 লিডারের ছবি নির্ধারণের লজিক
         let leader1Image = 'images/default_leader.jpg'; 
         let leader2Image = 'images/default_leader.jpg'; 
         const teamNumber = team.replace(/[^0-9]/g, ''); 
-        
+
         switch (teamNumber) {
             case '1': 
-                leader1Image = '/img/FIT-WDD-1517.jpg'; 
-                leader2Image = '/img/FIT-WDD-1517.jpg'; 
+                leader1Image = 'img/FIT-WDD-1523.jpg'; 
+                leader2Image = 'img/FIT-WDD-1501.jpg'; 
                 break;
             case '2': 
-                leader1Image = '/img/FIT-WDD-1517.jpg';
-                leader2Image = '/img/FIT-WDD-1517.jpg';
+                leader1Image = 'img/FIT-WDD-1555.jpg';
                 break;
             case '3': 
-                leader1Image = '/img/FIT-WDD-1517.jpg';
-                leader2Image = '/img/FIT-WDD-1517.jpg';
+                leader1Image = 'img/FIT-WDD-1553.jpg';
                 break;
             case '4': 
-                leader1Image = '/img/FIT-WDD-1517.jpg';
-                leader2Image = '/img/FIT-WDD-1517.jpg';
+                leader1Image = 'img/FIT-WDD-1517.jpg';
                 break;
             default:
                 break;
         }
 
-        // 1. Team Header
+        // 💡 ডাইনামিক লিডার ইমেজ HTML (টিম ১ হলে ২ জন, অন্যথায় ১ জন)
+        let leadersHtml = `<img src="${leader1Image}" alt="Team ${team} Leader 1" class="leader-profile-img leader-1">`;
+        if (teamNumber === '1') {
+            leadersHtml += `<img src="${leader2Image}" alt="Team ${team} Leader 2" class="leader-profile-img leader-2">`;
+        }
+
+        // 1. Team Header তৈরি
         const headerHtml = `
             <div class="team-section-header">
-                
                 <div class="team-header-info">
-                    <h2>Team ${team}</h2> 
+                    <h1>${team}</h1> 
                     <span class="team-count">(${teamStudents.length} Members)</span>
                 </div>
-                
                 <div class="team-leaders-images">
-                    <img src="${leader1Image}" alt="Team ${team} Leader 1" class="leader-profile-img leader-1">
-                    <img src="${leader2Image}" alt="Team ${team} Leader 2" class="leader-profile-img leader-2">
+                    ${leadersHtml}
                 </div>
             </div>
         `;
@@ -503,39 +503,52 @@ function filterByTeam(teamNumber) {
 // ==========================================================
 
 function toggleAdminButtons(isAdmin) {
-    const adminButtons = document.querySelectorAll('.edit, .delete, #addData, .admin-toggle-btn, #copyData');
+    // ১. এডিট, ডিলিট এবং অ্যাড ডাটা বাটনগুলো কন্ট্রোল করা
+    const actionButtons = document.querySelectorAll('.edit, .delete, #addData, #copyData');
+    actionButtons.forEach(button => {
+        button.style.display = isAdmin ? 'inline-block' : 'none';
+    });
+
+    // ২. তোমার ২টা টগল বাটনকে একসাথে সিলেক্ট করা
+    // এখানে '.admin-toggle-btn' ক্লাসটি দুটো বাটনেই আছে কিনা নিশ্চিত করো
+    const allToggleBtns = document.querySelectorAll('.admin-toggle-btn');
     
-    adminButtons.forEach(button => {
-        if (['addData', 'copyData'].includes(button.id)) {
-            button.style.display = isAdmin ? 'inline-block' : 'none';
-        } 
-        
-        const toggleBtn = document.querySelector('.admin-toggle-btn');
-        if(toggleBtn) {
-            if (isAdmin) {
-                toggleBtn.style.backgroundColor = '#f44336';
-                toggleBtn.innerHTML = '<i class="fas fa-user-lock"></i> Admin ON';
-            } else {
-                toggleBtn.style.backgroundColor = '#ffc107';
-                toggleBtn.innerHTML = '<i class="fas fa-user-shield"></i> Admin Toggle';
-            }
+    allToggleBtns.forEach(btn => {
+        if (isAdmin) {
+            btn.style.backgroundColor = '#f44336'; // লাল রঙ
+            btn.innerHTML = '<i class="fas fa-user-lock"></i> Admin ON';
+        } else {
+            btn.style.backgroundColor = '#ffc107'; // হলুদ রঙ
+            btn.innerHTML = '<i class="fas fa-user-shield"></i> Admin Toggle';
         }
     });
 }
 
 function toggleAdminMode() {
-    currentAdminMode = !currentAdminMode;
-    // ✅ সংশোধন: মাস্টার কপি ব্যবহার
-    renderStudentList(globalStudentDataMaster);
-    toggleAdminButtons(currentAdminMode);
-    
-    if (currentAdminMode) {
-        alert("Admin Mode ON: Edit, Delete, and Add Data functionalities are now visible.");
+    // যদি অ্যাডমিন মোড বর্তমানে অফ থাকে, তবে পাসওয়ার্ড চাইবে
+    if (!currentAdminMode) {
+        const password = prompt("অ্যাডমিন প্যানেলে প্রবেশের জন্য পাসওয়ার্ড দিন:");
+        
+        // এখানে তোমার পাসওয়ার্ড '1234' সেট করা আছে
+        if (password === "1234") {
+            currentAdminMode = true;
+            alert("অ্যাডমিন মোড সক্রিয় হয়েছে!");
+        } else {
+            alert("ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।");
+            return; // পাসওয়ার্ড ভুল হলে নিচের কোড আর চলবে না
+        }
     } else {
-        alert("Admin Mode OFF.");
+        // যদি অলরেডি অন থাকে, তবে সরাসরি অফ করে দেবে
+        currentAdminMode = false;
+        alert("অ্যাডমিন মোড বন্ধ করা হয়েছে।");
     }
-}
 
+    // মাস্টার ডেটা দিয়ে লিস্ট রি-রেন্ডার করা
+    renderStudentList(globalStudentDataMaster);
+    
+    // বাটনগুলোর অবস্থা আপডেট করা (Action Bar এবং Admin Photo-র নিচের বাটন)
+    toggleAdminButtons(currentAdminMode);
+}
 
 // ==========================================================
 // 8. MODAL FUNCTIONS & DETAILS VIEW (FIXED)
@@ -993,11 +1006,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if(adminToggleBtn) {
         adminToggleBtn.addEventListener('click', toggleAdminMode);
     }
-
 });
-
-
-
-
-
-
